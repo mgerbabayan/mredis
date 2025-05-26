@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug" name="XMLConfigMRedis">
+    <Properties>
+        <Property name="filename">redism.log</Property>
+    </Properties>
+
+
+    <Appenders>
+        <File type="File" name="saveToFile" fileName="${filename}">
+            <PatternLayout type="PatternLayout">
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+
+    <Loggers>
+
+        <Logger name="com.mg.redism" level="info" additivity="false">
+            <AppenderRef ref="saveToFile"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="saveToFile"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

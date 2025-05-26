@@ -1,0 +1,60 @@
+plugins {
+    id 'application'
+    id 'java'
+    id 'idea'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+group = 'com.mg.redism'
+version = '1.4.3b'
+
+sourceCompatibility = 21
+targetCompatibility = 21
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = '24'
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+application {
+    mainClass = 'com.mg.redism.RStarter'
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes(
+                'Implementation-Title': 'Gradle Jar Full',
+                'Implementation-Version': version,
+                'Main-Class': 'com.mg.redism.RStarter'
+        )
+    }
+}
+
+tasks.register('fullJar', Jar) {
+    manifest {
+        attributes(
+                'Implementation-Title': 'Gradle Jar Full',
+                'Implementation-Version': version,
+                'Main-Class': 'com.mg.redism.RStarter'
+        )
+    }
+    archiveBaseName.set("${project.name}-full")
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    from { sourceSets.main.output }
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:2.0.16'
+    implementation 'org.apache.logging.log4j:log4j-slf4j2-impl:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-1.2-api:2.23.1'
+    implementation 'com.esotericsoftware:kryo:5.6.2'
+    implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'redis.clients:jedis:5.2.0'
+    implementation 'com.apple:AppleJavaExtensions:1.4'
+    testImplementation 'junit:junit:4.13.2'
+}

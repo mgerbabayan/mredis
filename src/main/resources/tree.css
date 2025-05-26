@@ -1,0 +1,24 @@
+/*
+tree-cell.tree-cell .tree-disclosure-node  {
+    -fx-shape: null;
+    -fx-background-color: null;
+    -fx-background-image: url('cls_20x20.png');
+}
+.tree-cell:expanded .tree-disclosure-node {
+    -fx-shape: null;
+    -fx-background-color: null;
+    -fx-background-image: url('open_20x20.png');
+}
+*/
+
+/*.tree-cell:expanded  .tree-disclosure-node .arrow {
+     -fx-shape: null;
+     -fx-background-color: null;
+     -fx-background-image: null;
+ }
+
+.tree-cell  .tree-disclosure-node .arrow {
+     -fx-shape: null;
+     -fx-background-color: null;
+     -fx-background-image: null;
+ }*/
